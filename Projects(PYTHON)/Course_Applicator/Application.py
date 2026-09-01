@@ -95,8 +95,18 @@ card.pack(side='left', padx=(5,20))
 paypal=ttk.Radiobutton(pay, text='Paypal', value='female',variable=Pay,width=8)
 paypal.pack(side='left', padx=5)
 def displaymassege():
-    messagebox.askyesno("Are you Sure?", "Are you conformed enterd details?")
+    result= messagebox.askyesno("Are you Sure?", "Are you conformed enterd details?")
+    if (result):
+         sub()
 
 submit=ttk.Button(scrollable_frame,text="Submit", command=displaymassege)
 submit.pack()
+def sub():
+     sub=tk.Toplevel()
+     sub.title('Choices')
+     sub.geometry(f'500x500')
+     sub.iconbitmap("C:/Users/USER/OneDrive/Desktop/programs/PYTHON/Python_ GUI/Tkinter/icon.ico")
+     lable=tk.Label(sub, font='arial',text="Your Registation Sucsessfull!", fg='red')
+     lable.pack()
+
 Choices.mainloop()
