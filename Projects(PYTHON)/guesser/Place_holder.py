@@ -15,7 +15,7 @@ def PLH(parent, text, var):
         foreground=[("!disabled", "black")])
 
     entry=ttk.Entry(parent, textvariable=var, style="Placeholder.TEntry")
-    entry.pack( padx=10, pady=10)
+    entry.pack(padx=10, pady=10)
     entry.insert(0,text)
 
     def forcus_in(event):

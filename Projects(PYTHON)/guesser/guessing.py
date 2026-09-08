@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from Place_holder import PLH
+import random
 
 Game = tk.Tk()
 Game.title("GAME :)")
@@ -25,17 +26,22 @@ radio4=ttk.Radiobutton(frame, text="Impossible", variable=radio, value="Impossib
 radio4.pack(padx=5, side='left')
 
 def B():
+    global Num
+
     if radio.get() == "Easy":
         lable3.config(text="Enter Number between 1-10")
+        Num = random.randint(1, 10)
 
     elif radio.get() == "Hard":
         lable3.config(text="Enter Number between 1-100")
-
+        Num = random.randint(1, 100)
     elif radio.get() == "Insane":
         lable3.config(text="Enter Number between 1-500")
+        Num = random.randint(1, 500)
 
     elif radio.get() == "Impossible":
         lable3.config(text="Enter Number between 1-1000")
+        Num = random.randint(1, 1000)
 
 
 button2 = ttk.Button(Game, text="Select", command=B)
@@ -46,8 +52,28 @@ lable3.pack()
 
 Entry2=PLH(Game, "Enter Number Here", number)
 
-#def command():
+attempts = 0
 
 
-#button1=ttk.Button(Game, text='Submit', command=)
+label4 = tk.Label(Game,text='')
+label4.pack()
+def command():
+    global attempts
+    attempts += 1
+    try:
+        guess = int(number.get())
+    except ValueError:
+        label4.config(text="Please Enter a Number Between 1 - 10", fg='Red')
+        number.set("")
+    
+    if guess == Num:
+        label4.config(text=f"You got it in {attempts} attempts")
+    else:
+        label4.config(text=f"TRY AGAIN!")
+        number.set("")
+    
+
+button1=ttk.Button(Game, text='Submit', command=command)
+button1.pack()
+Game.bind("<Return>", lambda event: command())
 Game.mainloop()
