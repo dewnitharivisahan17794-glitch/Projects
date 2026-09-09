@@ -12,7 +12,7 @@ radio =tk.StringVar()
 label1 = tk.Label(Game, font='arial',fg='red', text="Welcome")
 label1.pack()
 frame=ttk.Frame(Game, width=12)
-frame.pack(fill='x', padx=100, pady=10)
+frame.pack( padx=100, pady=10,)
 lable2=tk.Label(frame, text="Choose Level:")
 lable2.pack(pady=10)
 
@@ -31,17 +31,20 @@ def B():
     if radio.get() == "Easy":
         lable3.config(text="Enter Number between 1-10")
         Num = random.randint(1, 10)
-
+        print(Num)
     elif radio.get() == "Hard":
         lable3.config(text="Enter Number between 1-100")
         Num = random.randint(1, 100)
+        print(Num)
     elif radio.get() == "Insane":
         lable3.config(text="Enter Number between 1-500")
         Num = random.randint(1, 500)
+        print(number)
 
     elif radio.get() == "Impossible":
         lable3.config(text="Enter Number between 1-1000")
         Num = random.randint(1, 1000)
+        print(Num)
 
 
 button2 = ttk.Button(Game, text="Select", command=B)
@@ -63,7 +66,7 @@ def command():
     try:
         guess = int(number.get())
     except ValueError:
-        label4.config(text="Please Enter a Number Between 1 - 10", fg='Red')
+        label4.config(text="Please Enter a Number In Given Range", fg='Red')
         number.set("")
     
     if guess == Num:
