@@ -1,2 +1,2 @@
 # Projects
-This is use for projects
+This is use for projects, done with learning process.
